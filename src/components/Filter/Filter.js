@@ -1,8 +1,12 @@
 import style from './Filter.module.css';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { actionSetFilter } from '../../redux/reduxActions';
 
-const Filter = ({ filter, handleFilterChange }) => {
+const Filter = () => {
+  const { filter } = useSelector(state => state);
+  const dispatch = useDispatch();
+  const handleFilterChange = valueInput =>
+    dispatch(actionSetFilter(valueInput));
   return (
     <input
       className={style.input__filter}
@@ -14,11 +18,4 @@ const Filter = ({ filter, handleFilterChange }) => {
     />
   );
 };
-const mapStateToProps = state => ({
-  filter: state.filter,
-});
-
-const mapDispatchToProps = dispatch => ({
-  handleFilterChange: valueInput => dispatch(actionSetFilter(valueInput)),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default Filter;

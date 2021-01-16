@@ -1,11 +1,15 @@
 import style from './ContactForm.module.css';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { connect } from 'react-redux';
 import { actionAddContact } from '../../redux/reduxActions';
 
-function ContactForm({ items, onAdd }) {
+function ContactForm() {
+  const { items } = useSelector(state => state);
+  const dispatch = useDispatch();
+  const onAdd = newContact => dispatch(actionAddContact(newContact));
+
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
@@ -23,8 +27,10 @@ function ContactForm({ items, onAdd }) {
         console.log('Sorry, we are not have ' + name + '.');
     }
   };
-  const handleCheckUniqueContact = (items, name) => {
-    const isExistContact = !!items.find(contact => contact.name === name);
+  const handleCheckUniqueContact = (arrayItems, nameContact) => {
+    const isExistContact = !!arrayItems.find(
+      contact => contact.name === nameContact,
+    );
     isExistContact && alert('Contact is already exist');
 
     return !isExistContact;
@@ -51,9 +57,8 @@ function ContactForm({ items, onAdd }) {
     if (!isValidForm) return;
 
     const newContact = { id: uuidv4(), name, phone };
-
-    onAdd(newContact);
     resetForm();
+    return onAdd(newContact);
   };
 
   return (
@@ -76,12 +81,5 @@ function ContactForm({ items, onAdd }) {
     </form>
   );
 }
-const mapStateToProps = state => ({
-  items: state.items,
-});
 
-const mapDispatchToProps = dispatch => ({
-  onAdd: newContact => dispatch(actionAddContact(newContact)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+export default ContactForm;

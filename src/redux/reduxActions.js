@@ -1,16 +1,14 @@
-import actionsType from './actionsType';
-const actionAddContact = newContact => ({
-  type: actionsType.ADD,
+import { createAction } from '@reduxjs/toolkit';
+
+const actionAddContact = createAction('items/add', newContact => ({
   payload: newContact,
-});
+}));
 
-const actionRemoveContact = id => ({
-  type: actionsType.DELETE,
+const actionRemoveContact = createAction('items/remove', id => ({
   payload: id,
-});
-
-const actionSetFilter = filter => ({
-  type: actionsType.FILTER,
+}));
+const actionSetFilter = createAction('filter/addFilter', filter => ({
   payload: filter,
-});
+}));
+
 export { actionAddContact, actionRemoveContact, actionSetFilter };

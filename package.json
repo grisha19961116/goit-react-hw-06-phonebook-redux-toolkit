@@ -1,9 +1,10 @@
 {
-  "homepage": "https://grisha19961116.github.Io/goit-react-hw-06-phonebook-redux",
+  "homepage": "https://grisha19961116.github.Io/goit-react-hw-06-phonebook-redux-toolkit",
   "name": "react-21-22",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
@@ -18,13 +19,15 @@
     "react-toastify": "^6.2.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
     "redux-toolkit": "^1.1.2",
     "uuid": "^8.3.1",
     "web-vitals": "^0.2.4",
     "yup": "^0.32.8"
   },
   "scripts": {
-    "start": "set PORT=3005 && react-scripts start",
+    "start": "set PORT=3006 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

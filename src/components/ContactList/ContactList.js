@@ -1,8 +1,13 @@
 import style from './ContactList.module.css';
-import { connect } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
 import { actionRemoveContact } from '../../redux/reduxActions';
 
-const ContactList = ({ items, filter, onRemove }) => {
+const ContactList = () => {
+  const { items, filter } = useSelector(state => state);
+  const dispatch = useDispatch();
+  const onRemove = valueInput => dispatch(actionRemoveContact(valueInput));
+
   const getVisibleContacts = (items, filterInput) => {
     return items.filter(contact =>
       contact.name.toLowerCase().includes(filterInput.toLowerCase()),
@@ -32,13 +37,4 @@ const ContactList = ({ items, filter, onRemove }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  items: state.items,
-  filter: state.filter,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onRemove: id => dispatch(actionRemoveContact(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+export default ContactList;
