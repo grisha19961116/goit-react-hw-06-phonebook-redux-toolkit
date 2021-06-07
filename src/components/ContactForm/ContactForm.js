@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { actionAddContact } from '../../redux/reduxActions';
 
 function ContactForm() {
-  const { items } = useSelector(state => state);
+  const { contacts } = useSelector(state => state);
   const dispatch = useDispatch();
   const onAdd = newContact => dispatch(actionAddContact(newContact));
 
@@ -27,22 +27,99 @@ function ContactForm() {
         console.log('Sorry, we are not have ' + name + '.');
     }
   };
-  const handleCheckUniqueContact = (arrayItems, nameContact) => {
-    const isExistContact = !!arrayItems.find(
-      contact => contact.name === nameContact,
-    );
-    isExistContact && alert('Contact is already exist');
-
-    return !isExistContact;
+  const handleCheckUniqueContact = () => {
+    const isExistName = contacts.some(contact => contact.name === name);
+    const isExistPhone = contacts.some(contact => contact.phone === phone);
+    isExistName &&
+      toast.warn('⚠️ You have contact with same name!', {
+        position: 'top-right',
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    isExistPhone &&
+      toast.error('🚀 Number has been using!', {
+        position: 'top-right',
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    return !isExistPhone;
   };
 
   const validateFrom = () => {
-    if (!name || !phone) {
-      toast('Some filed is empty');
+    if (!name && !phone) {
+      toast.warn('⚠️ Fields are empty!', {
+        position: 'top-right',
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return false;
     }
 
-    return handleCheckUniqueContact(items, name);
+    if (!name && phone) {
+      toast.warn('⚠️ Field name empty!', {
+        position: 'top-right',
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return false;
+    }
+
+    if (!phone && name) {
+      toast.warn('⚠️ Field phone empty!', {
+        position: 'top-right',
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return false;
+    }
+
+    if (phone.length !== 10) {
+      toast.warn('⚠️ Number has to have 10 symbols!', {
+        position: 'top-right',
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return false;
+    }
+
+    if (name.length > 12) {
+      toast.warn('⚠️ Name has to be no longer 12 characters!', {
+        position: 'top-right',
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return false;
+    }
+
+    return handleCheckUniqueContact();
   };
 
   const resetForm = () => {
@@ -52,9 +129,8 @@ function ContactForm() {
 
   const handleFromSubmit = e => {
     e.preventDefault();
-    const isValidForm = validateFrom();
-
-    if (!isValidForm) return;
+    const isExistPhone = validateFrom();
+    if (!isExistPhone) return;
 
     const newContact = { id: uuidv4(), name, phone };
     resetForm();
@@ -62,8 +138,9 @@ function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleFromSubmit}>
+    <form className={style.contactForm} onSubmit={handleFromSubmit}>
       <input
+        className={style.contactForm__input}
         type="text"
         name="name"
         placeholder="Enter name"
@@ -71,13 +148,16 @@ function ContactForm() {
         onChange={handleChangeForm}
       ></input>
       <input
+        className={style.contactForm__input}
         type="tel"
         name="phone"
         placeholder="Enter phone number"
         value={phone}
         onChange={handleChangeForm}
       ></input>
-      <button type="submit">Add Contact</button>
+      <button className={style.buttonSubmit} type="submit">
+        Add Contact
+      </button>
     </form>
   );
 }
