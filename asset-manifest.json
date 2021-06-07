@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-06-phonebook-redux-toolkit/static/css/main.968ba35e.chunk.css",
-    "main.js": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/main.ee027f9d.chunk.js",
-    "main.js.map": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/main.ee027f9d.chunk.js.map",
+    "main.css": "/goit-react-hw-06-phonebook-redux-toolkit/static/css/main.b0888b88.chunk.css",
+    "main.js": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/main.8c0ce475.chunk.js",
+    "main.js.map": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/main.8c0ce475.chunk.js.map",
     "runtime-main.js": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/runtime-main.073ca4c3.js",
     "runtime-main.js.map": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/runtime-main.073ca4c3.js.map",
     "static/css/2.19e84d99.chunk.css": "/goit-react-hw-06-phonebook-redux-toolkit/static/css/2.19e84d99.chunk.css",
-    "static/js/2.8aab7ba5.chunk.js": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/2.8aab7ba5.chunk.js",
-    "static/js/2.8aab7ba5.chunk.js.map": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/2.8aab7ba5.chunk.js.map",
+    "static/js/2.8fe83802.chunk.js": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/2.8fe83802.chunk.js",
+    "static/js/2.8fe83802.chunk.js.map": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/2.8fe83802.chunk.js.map",
     "index.html": "/goit-react-hw-06-phonebook-redux-toolkit/index.html",
     "static/css/2.19e84d99.chunk.css.map": "/goit-react-hw-06-phonebook-redux-toolkit/static/css/2.19e84d99.chunk.css.map",
-    "static/css/main.968ba35e.chunk.css.map": "/goit-react-hw-06-phonebook-redux-toolkit/static/css/main.968ba35e.chunk.css.map",
-    "static/js/2.8aab7ba5.chunk.js.LICENSE.txt": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/2.8aab7ba5.chunk.js.LICENSE.txt"
+    "static/css/main.b0888b88.chunk.css.map": "/goit-react-hw-06-phonebook-redux-toolkit/static/css/main.b0888b88.chunk.css.map",
+    "static/js/2.8fe83802.chunk.js.LICENSE.txt": "/goit-react-hw-06-phonebook-redux-toolkit/static/js/2.8fe83802.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.073ca4c3.js",
     "static/css/2.19e84d99.chunk.css",
-    "static/js/2.8aab7ba5.chunk.js",
-    "static/css/main.968ba35e.chunk.css",
-    "static/js/main.ee027f9d.chunk.js"
+    "static/js/2.8fe83802.chunk.js",
+    "static/css/main.b0888b88.chunk.css",
+    "static/js/main.8c0ce475.chunk.js"
   ]
 }
